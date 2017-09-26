@@ -40,5 +40,8 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A170311380
 RUN curl -sSL https://get.rvm.io | bash -s stable --ruby=$RUBY_VERSION
 RUN echo '. /etc/profile.d/rvm.sh\n' >> ~/.profile
 
+# set no docs for gems
+RUN echo 'gem: --no-document' >> ~/.gemrc
+
 # -l makes bash act as if it had been invoked as a login shell and init ~/.profile
 ENTRYPOINT /bin/bash -l
